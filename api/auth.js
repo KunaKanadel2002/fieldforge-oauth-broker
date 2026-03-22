@@ -31,7 +31,7 @@ export default async function handler(req, res) {
   const params = new URLSearchParams({
     response_type: 'code',
     client_id: process.env.SALESFORCE_CLIENT_ID,
-    redirect_uri: `${process.env.VERCEL_URL || 'https://fieldforge-oauth.vercel.app'}/api/callback`,
+    redirect_uri: `https://${process.env.VERCEL_URL || 'fieldforge-oauth-broker.vercel.app'}/api/callback`,
     scope: 'full api refresh_token',
     state: stateWithVerifier,
     code_challenge: codeChallenge,
