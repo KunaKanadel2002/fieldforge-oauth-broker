@@ -28,16 +28,16 @@ export default async function handler(req, res) {
   const stateWithVerifier = `${state || 'default'}|${codeVerifier}`;
   
   // Build OAuth URL
-  const params = new URLSearchParams({
+ const params = new URLSearchParams({
     response_type: 'code',
     client_id: process.env.SALESFORCE_CLIENT_ID,
-    redirect_uri: `https://${process.env.VERCEL_URL || 'fieldforge-oauth-broker.vercel.app'}/api/callback`,
+    redirect_uri: 'https://fieldforge-oauth-broker.vercel.app/api/callback', // NEW - HARDCODED
     scope: 'full api refresh_token',
     state: stateWithVerifier,
     code_challenge: codeChallenge,
     code_challenge_method: 'S256',
     prompt: 'login'
-  });
+});
   
   const authUrl = `${loginUrl}/services/oauth2/authorize?${params.toString()}`;
   
