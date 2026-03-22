@@ -62,7 +62,7 @@ export default async function handler(req, res) {
         code: code,
         client_id: process.env.SALESFORCE_CLIENT_ID,
         client_secret: process.env.SALESFORCE_CLIENT_SECRET,
-        redirect_uri: `${process.env.VERCEL_URL || 'https://fieldforge-oauth.vercel.app'}/api/callback`,
+        redirect_uri: `https://${process.env.VERCEL_URL || 'fieldforge-oauth-broker.vercel.app'}/api/callback`,
         code_verifier: codeVerifier
       })
     });
