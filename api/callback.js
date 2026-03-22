@@ -57,14 +57,14 @@ export default async function handler(req, res) {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: new URLSearchParams({
-        grant_type: 'authorization_code',
-        code: code,
-        client_id: process.env.SALESFORCE_CLIENT_ID,
-        client_secret: process.env.SALESFORCE_CLIENT_SECRET,
-        redirect_uri: `https://${process.env.VERCEL_URL || 'fieldforge-oauth-broker.vercel.app'}/api/callback`,
-        code_verifier: codeVerifier
-      })
+    body: new URLSearchParams({
+    grant_type: 'authorization_code',
+    code: code,
+    client_id: process.env.SALESFORCE_CLIENT_ID,
+    client_secret: process.env.SALESFORCE_CLIENT_SECRET,
+    redirect_uri: 'https://fieldforge-oauth-broker.vercel.app/api/callback', // NEW - HARDCODED
+    code_verifier: codeVerifier
+})
     });
     
     if (!tokenResponse.ok) {
